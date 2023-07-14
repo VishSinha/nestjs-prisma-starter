@@ -35,6 +35,18 @@ model Post {
   authorId  String?
 }
 
+model Institution {
+  id         String   @id @default(cuid())
+  name       String
+  shortName  String   @unique
+  address1   String
+  city       String
+  state      String
+  zipCode    String
+  addl_attrs Json?
+  updatedAt  DateTime @updatedAt
+}
+
 enum Role {
   ADMIN
   USER

@@ -11,6 +11,7 @@ import { PostsModule } from 'src/posts/posts.module';
 import config from 'src/common/configs/config';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GqlConfigService } from './gql-config.service';
+import { DepartmentModule } from './department/department.module';
 
 @Module({
   imports: [
@@ -27,7 +28,10 @@ import { GqlConfigService } from './gql-config.service';
         ],
       },
     }),
-
+    // GraphQLModule.forRoot({
+    //   playground: false, 
+    //   typePaths: ['./**/*.graphql']
+    // }),
     GraphQLModule.forRootAsync<ApolloDriverConfig>({
       driver: ApolloDriver,
       useClass: GqlConfigService,
@@ -36,6 +40,7 @@ import { GqlConfigService } from './gql-config.service';
     AuthModule,
     UsersModule,
     PostsModule,
+    DepartmentModule,
   ],
   controllers: [AppController],
   providers: [AppService, AppResolver],

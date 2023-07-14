@@ -25,6 +25,18 @@ Table Post {
   authorId String
 }
 
+Table Institution {
+  id String [pk]
+  name String [not null]
+  shortName String [unique, not null]
+  address1 String [not null]
+  city String [not null]
+  state String [not null]
+  zipCode String [not null]
+  addl_attrs Json
+  updatedAt DateTime [not null]
+}
+
 Enum Role {
   ADMIN
   USER
